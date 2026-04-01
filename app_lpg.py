@@ -45,12 +45,12 @@ with tab1:
     st.write("### Formulir Pemesanan")
     nama = st.text_input("Nama Pangkalan")
     alamat = st.text_area("Alamat Pengiriman")
-    jenis = st.selectbox("Pilih Jenis LPG", ["LPG 12kg", "Bright Gas 5.5kg"])
+    jenis = st.selectbox("Pilih Jenis LPG", ["Bright Gas 12kg", "Bright Gas 5.5 kg"])
     jumlah = st.number_input("Jumlah Tabung", min_value=1, step=1)
 
     # Konfigurasi WhatsApp
     nomor_wa = "6285876146502" # <--- GANTI DENGAN NOMOR WA KAMU
-    pesan_wa = f"Halo Admin Primkopal, saya *{nama}* mau order *{jenis}* sebanyak *{jumlah}* tabung. Kirim ke alamat: *{alamat}*."
+    pesan_wa = f"Halo Admin Primkopal, saya pangkalan *{nama}* mau order *{jenis}* sebanyak *{jumlah}* tabung. Kirim ke alamat: *{alamat}*."
     link_wa = f"https://wa.me/{nomor_wa}?text={pesan_wa.replace(' ', '%20')}"
 
     if st.button("Pesan Sekarang via WhatsApp"):
