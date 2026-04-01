@@ -43,7 +43,7 @@ with tab1:
         st.metric("Bright Gas 5.5kg", f"{stok_5kg_skrg} Tabung")
 
     st.write("### Formulir Pemesanan")
-    nama = st.text_input("Nama Lengkap")
+    nama = st.text_input("Nama Pangkalan")
     alamat = st.text_area("Alamat Pengiriman")
     jenis = st.selectbox("Pilih Jenis LPG", ["LPG 12kg", "Bright Gas 5.5kg"])
     jumlah = st.number_input("Jumlah Tabung", min_value=1, step=1)
