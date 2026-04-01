@@ -25,7 +25,7 @@ def baca_data():
 stok_12kg_skrg, stok_5kg_skrg = baca_data()
 
 # --- TAMPILAN UTAMA ---
-st.title("📦 Layanan LPG NPSO Primkopal")
+st.title(" ✨Layanan Order LPG NPSO Primkopal")
 st.subheader("Lanal Cilacap")
 st.write("---")
 
