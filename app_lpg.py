@@ -26,7 +26,7 @@ stok_12kg_skrg, stok_5kg_skrg = baca_data()
 
 # --- TAMPILAN UTAMA ---
 st.title(" ✨Layanan Order LPG NPSO Primkopal")
-st.subheader("Lanal Cilacap")
+st.subheader("Bright Gas 5,5 Kg & Bright Gas 12 Kg  ")
 st.write("---")
 
 # --- MENU TAB ---
