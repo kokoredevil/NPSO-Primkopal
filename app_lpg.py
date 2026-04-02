@@ -73,7 +73,7 @@ with tab1:
     # Membatasi pilihan dari hari ini sampai 31 Desember tahun berjalan
     hari_ini = date.today()
     akhir_tahun = date(hari_ini.year, 12, 31)
-    tgl_kirim = st.date_input("Tanggal Rencana Pengiriman", value=hari_ini, min_value=hari_ini, max_value=akhir_tahun)
+    tgl_kirim = st.date_input("Tanggal Rencana Penerimaan", value=hari_ini, min_value=hari_ini, max_value=akhir_tahun)
     
     jenis = st.selectbox("Pilih Jenis Tabung", ["Bright Gas 12kg", "Bright Gas 5.5kg"])
     jumlah = st.number_input("Jumlah Pesanan (Tabung)", min_value=1, step=1)
