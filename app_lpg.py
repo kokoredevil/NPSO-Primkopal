@@ -23,20 +23,28 @@ def baca_data():
 
 stok_12kg_skrg, stok_5kg_skrg = baca_data()
 
-# --- 3. TAMPILAN VISUAL ---
+# --- 3. TAMPILAN VISUAL (DIBERSIHKAN) ---
 st.markdown(
     """
     <style>
+    /* Background utama */
     .stApp {
-        background: url("https://images.unsplash.com/photo-1585314062340-f1a5a7c9328d?q=80&w=1920&auto=format&fit=crop");
+        background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                    url("https://images.unsplash.com/photo-1585314062340-f1a5a7c9328d?q=80&w=1920&auto=format&fit=crop");
         background-size: cover;
         background-attachment: fixed;
     }
-    .stTabs, .stMetric, .stMarkdown, .stTextInput, .stNumberInput, .stSelectbox, .stTextArea {
-        background-color: rgba(255, 255, 255, 0.9);
-        padding: 15px;
-        border-radius: 12px;
-        margin-bottom: 10px;
+    
+    /* Box putih transparan hanya untuk area konten utama agar kontras */
+    .block-container {
+        background-color: rgba(255, 255, 255, 0.05);
+        padding: 2rem;
+        border-radius: 20px;
+    }
+
+    /* Menyesuaikan warna metric agar selalu terbaca */
+    [data-testid="stMetricValue"] {
+        color: #FF4B4B !important;
     }
     </style>
     """,
@@ -60,14 +68,15 @@ with tab1:
     with col2:
         st.metric("Bright Gas 5.5kg", f"{stok_5kg_skrg} Tabung")
 
+    st.write("---")
     st.write("### 📝 Formulir Pemesanan")
     nama = st.text_input("Nama Lengkap")
     alamat = st.text_area("Alamat Lengkap Pengiriman")
     jenis = st.selectbox("Pilih Jenis Tabung", ["LPG 12kg", "Bright Gas 5.5kg"])
     jumlah = st.number_input("Jumlah Pesanan (Tabung)", min_value=1, step=1)
 
-    # Konfigurasi WhatsApp (GANTI NOMOR DISINI)
-    nomor_wa = "628123456789" 
+    # Konfigurasi WhatsApp
+    nomor_wa = "628123456789" # <--- GANTI NOMOR WA DISINI
     pesan_wa = f"Halo Admin Primkopal, saya *{nama}* ingin memesan *{jenis}* sebanyak *{jumlah}* tabung. Alamat Kirim: *{alamat}*."
     link_wa = f"https://wa.me/{nomor_wa}?text={pesan_wa.replace(' ', '%20')}"
 
@@ -86,25 +95,14 @@ with tab1:
                 st.error("❌ Stok tidak mencukupi!")
 
             if valid:
-                st.success("✅ Stok berhasil dipesan! Klik tombol hijau di bawah.")
-                # TOMBOL WHATSAPP TANPA TEKS MENTAH
-                tombol_html = f'''
+                st.success("✅ Stok berhasil dipesan! Klik tombol di bawah.")
+                st.markdown(f'''
                     <a href="{link_wa}" target="_blank" style="text-decoration: none;">
-                        <div style="
-                            background-color: #25D366;
-                            color: white;
-                            padding: 15px;
-                            text-align: center;
-                            border-radius: 10px;
-                            font-weight: bold;
-                            font-size: 20px;
-                            margin-top: 10px;
-                        ">
+                        <div style="background-color: #25D366; color: white; padding: 15px; text-align: center; border-radius: 10px; font-weight: bold; font-size: 20px; margin-top: 10px;">
                             📲 KIRIM KE WHATSAPP
                         </div>
                     </a>
-                '''
-                st.markdown(tombol_html, unsafe_allow_html=True)
+                ''', unsafe_allow_html=True)
                 st.balloons()
 
 # --- TAB ADMIN ---
@@ -114,7 +112,9 @@ with tab2:
     if pwd == "lanal123":
         new_12 = st.number_input("Stok 12kg", value=stok_12kg_skrg)
         new_5 = st.number_input("Stok 5.5kg", value=stok_5kg_skrg)
-        if st.button("Update Stok"):
+        if st.button("Simpan Perubahan Stok"):
             simpan_data(new_12, new_5)
             st.success("Stok diperbarui!")
             st.rerun()
+    elif pwd:
+        st.error("Password salah!")
