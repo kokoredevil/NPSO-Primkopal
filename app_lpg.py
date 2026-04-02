@@ -64,13 +64,13 @@ with tab1:
     
     col1, col2 = st.columns(2)
     with col1:
-        st.metric("LPG 12kg (NPSO)", f"{stok_12kg_skrg} Tabung")
+        st.metric("Bright Gas 12kg (NPSO)", f"{stok_12kg_skrg} Tabung")
     with col2:
         st.metric("Bright Gas 5.5kg", f"{stok_5kg_skrg} Tabung")
 
     st.write("---")
     st.write("### 📝 Formulir Pemesanan")
-    nama = st.text_input("Nama Lengkap")
+    nama = st.text_input("Nama Pangkalan")
     alamat = st.text_area("Alamat Lengkap Pengiriman")
     jenis = st.selectbox("Pilih Jenis Tabung", ["LPG 12kg", "Bright Gas 5.5kg"])
     jumlah = st.number_input("Jumlah Pesanan (Tabung)", min_value=1, step=1)
