@@ -76,7 +76,7 @@ with tab1:
     jumlah = st.number_input("Jumlah Pesanan (Tabung)", min_value=1, step=1)
 
     # Konfigurasi WhatsApp
-    nomor_wa = "628123456789" # <--- GANTI NOMOR WA DISINI
+    nomor_wa = "6285876146502" # <--- GANTI NOMOR WA DISINI
     pesan_wa = f"Halo Admin Primkopal, saya *{nama}* ingin memesan *{jenis}* sebanyak *{jumlah}* tabung. Alamat Kirim: *{alamat}*."
     link_wa = f"https://wa.me/{nomor_wa}?text={pesan_wa.replace(' ', '%20')}"
 
